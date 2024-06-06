@@ -2,25 +2,20 @@
 import dotenv from 'dotenv';
 import connectDB from "./db/index.js";
 import { app } from './app.js';
+import mongooseAggregatePaginate from 'mongoose-aggregate-paginate-v2';
 
 dotenv.config({
-    path :'./env'
+    path :'./.env'
 })
 
 
 connectDB().then(()=>{
-    app.listion(process.env.PORT || 8000,()=>{
+    app.listen(process.env.PORT || 8000,()=>{
         console.log(`server is runing ar port: ${process.env.PORT}`);
     })
 }).catch((error)=>{
     console.log("Mongo DB connection failed !!",error);
 });
-
-
-
-
-
-
 
 
 /* import express from "express";
